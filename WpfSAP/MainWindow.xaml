@@ -24,7 +24,7 @@
         </StackPanel>
         <StackPanel Grid.Row="1">
             <Grid>
-                <Button Name="btLot" Click="btLotClict" Width="90" Margin=" 0,10" HorizontalAlignment="Left"   Visibility="Visible"   >Lot NO</Button>
+                <Button Name="btLot" Click="btLotClict" Width="90" Margin=" 0,10" HorizontalAlignment="Left"   Visibility="Hidden"    >Lot NO</Button>
             <Button Name="btCustomer" Click="btLotClict" Width="90" Margin=" 100, 10" HorizontalAlignment="Left " Visibility="Hidden" >Customer</Button>
                 <Button Name="btSapInv" Click="btSapInvClict" Width="90" Margin=" 200,10" HorizontalAlignment="Left"   Visibility="Hidden"  >Sap to Soldev</Button>
             </Grid>
