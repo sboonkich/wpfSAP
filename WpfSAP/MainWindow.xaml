@@ -1,0 +1,129 @@
+﻿<Window x:Class="WpfSAP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfSAP"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="850" Width="800">
+    <Grid>
+        <Grid.RowDefinitions >
+            <RowDefinition  Height="*"/>
+            <RowDefinition  Height="*"/>
+            <RowDefinition  Height="Auto"/>
+            <RowDefinition  Height="*"/>
+            <RowDefinition  Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Grid >
+             <TextBlock Width="90" Margin=" 0,10" HorizontalAlignment="Left ">Document No</TextBlock>
+                <TextBox Name="txtDocNo" Width="90" Margin=" 100,10" HorizontalAlignment="Left "></TextBox>
+                <Button Name="btVANTR" Click="CLICK_btVanTr" Width="90" Margin=" 200, 10" HorizontalAlignment="Left ">VAN Tranfer</Button>
+
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Grid>
+                <Button Name="btLot" Click="btLotClict" Width="90" Margin=" 0,10" HorizontalAlignment="Left"   Visibility="Visible"   >Lot NO</Button>
+            <Button Name="btCustomer" Click="btLotClict" Width="90" Margin=" 100, 10" HorizontalAlignment="Left " Visibility="Hidden" >Customer</Button>
+                <Button Name="btSapInv" Click="btSapInvClict" Width="90" Margin=" 200,10" HorizontalAlignment="Left"   Visibility="Hidden"  >Sap to Soldev</Button>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="4">
+
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <!--<Button Name="btnToSml" Click="btVanTrClict" Width="90" Visibility="Hidden" >Confirm to Smilingfish</Button>-->
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <TabControl Name="SapTab" TabStripPlacement="Top" Background="LightGray" BorderBrush="Blue" Margin="10,10,0,5">
+                <TabItem Header="Sap Data" IsSelected="True" Background="Gray">
+                    <StackPanel>
+                    <DataGrid  Height="Auto" MaxHeight="950" MaxWidth="750" Name="dgList"  ItemsSource="{Binding}"  AlternatingRowBackground = "LightBlue"  
+                            AlternationCount = "2" AutoGenerateColumns = "False" HorizontalAlignment="Left">
+
+                        <DataGrid.Columns>
+
+
+                            <!--<DataGridTextColumn Header = "ID" Binding = "{Binding ITN_STS}" />-->
+                            <DataGridTextColumn Header = "Document No" Binding = "{Binding ITN_DOCNO}" />
+                            <DataGridTextColumn Header = "Date" Binding = "{Binding ITN_DATE,StringFormat=dd/MM/yyyy}" />
+                            <DataGridTextColumn Header = "Line" Binding = "{Binding ITN_LINE}" />
+                            <!--<DataGridTextColumn Header = "Item" Binding = "{Binding ITN_DOCTYPE}" />-->
+                                <DataGridTextColumn Header = "From WH->" Binding = "{Binding ITN_WHT}" />
+                                <DataGridTextColumn Header = "->To WH" Binding = "{Binding ITN_WHF}" />
+                            <!--<DataGridTextColumn Header = "Wh" Binding = "{Binding ITN_WFT}" />-->
+                            <DataGridTextColumn Header = "Description" Width="200" Binding = "{Binding ITN_DESC}" />
+                            <DataGridTextColumn Header = "Goods " Width="100"  Binding = "{Binding ITN_GOODS}" />
+                            <DataGridTextColumn Header = "Qty"  Binding = "{Binding ITN_QTY,StringFormat=N2}" />
+                            <DataGridTextColumn Header = "Unit " Binding = "{Binding ITN_UNIT}" />
+                            <DataGridTextColumn Header = "Stock Qty" Binding = "{Binding ITN_STOCKQTY,StringFormat=N2}" />
+                            <DataGridTextColumn Header = "Stock Um" Binding = "{Binding ITN_STOCKUM}" />
+                            <!--<DataGridTextColumn Header = "Values" Binding = "{Binding ITN_VALUE}" />-->
+                            <!--<DataGridTextColumn Header = "User" Binding = "{Binding ITN_USER}" />-->
+                            <!--<DataGridTextColumn Header = "Date" Binding = "{Binding ITN_UDATE}" />-->
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Name="btnToSml" Click="btVanTrClict" Width="90" Visibility="Hidden" >Confirm to Smilingfish</Button>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Smiling Fish Data" Background="Gray">
+                    
+                </TabItem>
+                <TabItem Header="SolDev Data" Background="Gray">
+                    <!--<DataGrid  Height="Auto" MaxHeight="950" MaxWidth="750" Name="dgSoldev"  ItemsSource="{Binding}"  AlternatingRowBackground = "LightBlue"  
+         AlternationCount = "2" AutoGenerateColumns = "True" HorizontalAlignment="Left">
+                        </DataGrid>--> 
+                    <DataGrid  Height="Auto" MaxHeight="950" MaxWidth="750" Name="dgSoldev"  ItemsSource="{Binding}"  AlternatingRowBackground = "LightBlue"  
+         AlternationCount = "2" AutoGenerateColumns = "False" HorizontalAlignment="Left">
+
+                        <DataGrid.Columns>
+                            <!--<DataGridTextColumn Header = "ID" Binding = "{Binding ITN_STS}" />-->
+                            <DataGridTextColumn Header = "SaleCode" Binding = "{Binding SALECODE}" />
+                            <DataGridTextColumn Header = "BranchCode" Binding = "{Binding BRANCHCODE}" />
+                            <DataGridTextColumn Header = "DocNo" Binding = "{Binding DOCNO}" />
+                            <DataGridTextColumn Header = "RefDocNo" Binding = "{Binding REFDOCNO}" />
+                            <DataGridTextColumn Header = "Remark" Binding = "{Binding REMARK}" />
+                            <DataGridTextColumn Header = "Lot" Binding = "{Binding LOT}" />
+                            <DataGridTextColumn Header = "Seq" Binding = "{Binding SEQ}" />
+                            <DataGridTextColumn Header = "ProductCode" Width="200" Binding = "{Binding PRODUCTCODE}" />
+                            <DataGridTextColumn Header = "UnitCode" Width="100"  Binding = "{Binding UNITCODE}" />
+                            <DataGridTextColumn Header = "TransQty"  Binding = "{Binding TRANSQTY,StringFormat=N2}" />
+                            <DataGridTextColumn Header = "RemarkDetail" Binding = "{Binding REMARKDETAIL}" />
+                            <!--<DataGridTextColumn Header = "Stock Qty" Binding = "{Binding ITN_STOCKQTY,StringFormat=N2}" />-->
+                            <!--<DataGridTextColumn Header = "Stock Um" Binding = "{Binding ITN_STOCKUM}" />-->
+                            <!--<DataGridTextColumn Header = "Values" Binding = "{Binding ITN_VALUE}" />-->
+                            <!--<DataGridTextColumn Header = "User" Binding = "{Binding ITN_USER}" />-->
+                            <!--<DataGridTextColumn Header = "Date" Binding = "{Binding ITN_UDATE}" />-->
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Header="Contact Us" Background="Gray">
+                    <Grid Height="150" Width="300">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label HorizontalAlignment="Right" Margin="0,12,0,0" Width="42.033">...</Label>
+                        <Label Grid.Row="1" HorizontalAlignment="Right" Margin="0,14,0,0" Width="40.097">...</Label>
+                        <TextBox Name="Name" Grid.Column="1" Margin="0,0,0,13" />
+                        <TextBox Name="Email" Grid.Column="1" Grid.Row="1" Margin="0,14,0,0" />
+                        
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+            
+        </StackPanel>
+    </Grid>
+</Window>
