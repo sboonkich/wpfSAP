@@ -109,6 +109,11 @@ namespace WpfSAP
         private void insertTBITRAN(string itnDocNo,DateTime itnDate ,int itnLine, string itnWht, string itnWhf, string itnDesc, string itnGoods, double itnQty, string itnUm, double itnStockQty, string itnStockUm)
         {
             //itnUM = 1=`กป`,2=แพ๊ก,3=ลัง
+            string iSymbol = "1";
+            if( itnQty < 0)
+            {
+                iSymbol = "2";
+            }
             string lSql = "INSERT INTO [dbo].[TB_ITRAN] " +
                            " ([ITN_STS],[ITN_IDOCTYPE],[ITN_DOCNO],[ITN_DATE] " +
                            " ,[ITN_LINE],[ITN_DOCTYPE],[ITN_SYMBOL],[ITN_WHF] " +
@@ -116,7 +121,7 @@ namespace WpfSAP
                            " ,[ITN_UM],[ITN_STOCKQTY],[ITN_STOCKKUM],[ITN_VALUE] " +
                            " ,[ITN_USER],[ITN_UDATE]) " +
                            " VALUES(0,'22','" + itnDocNo + "','" + itnDate.ToString("yyyy/MM/dd") + "'," +
-                           itnLine.ToString () + ", 9 , 1,'"+ itnWhf + "','" +
+                           itnLine.ToString () + ", 9 ," + iSymbol + " ,"+ itnWhf + "','" +
                            "" + itnWht + "','" + itnDesc + "','" + itnGoods + "'," + itnQty.ToString () + "," +
                            "'"+ itnUm + "'," + itnStockQty.ToString() +",'" + itnStockUm + "', 0 ," +
                            "'SAPTR',getdate() " +
